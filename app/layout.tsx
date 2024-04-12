@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {DM_Sans, DM_Serif_Display} from "next/font/google";
 import "./globals.css";
+import {Toaster} from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Wishlist",
@@ -36,7 +37,7 @@ export default function RootLayout({
             sizes="<generated>"
         />
       </head>
-      <body className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>{children}</body>
+      <body className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>{children}<Toaster /></body>
     </html>
   );
 }
