@@ -4,6 +4,7 @@ import Notifications from "@/app/components/notifications/Notifications";
 import CalendarCard from "@/app/components/callendar/CalendarCard";
 import SearchFriends from "@/app/components/SearchFriends";
 import WishDashboard from "@/app/components/wishes/WishDashboard";
+
 export default function Home() {
 
 // Визначаємо масив типу NotificationProps

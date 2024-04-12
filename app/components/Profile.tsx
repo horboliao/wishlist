@@ -1,5 +1,6 @@
 'use client'
 import React from 'react';
+import {signOut} from "next-auth/react";
 import { Calendar } from 'lucide-react';
 import {
     Card,
@@ -10,6 +11,7 @@ import {
     CardTitle
 } from "@/components/ui/card";
 import {calculateAge, formatDate} from "@/lib/date";
+import {Button} from "@/components/ui/button";
 
 interface Profile {
     firstname: string;
@@ -51,6 +53,9 @@ const Profile = ({following, followers, firstname, birthday, email, lastname}:Pr
                     </div>
                 </div>
             </CardContent>
+            <CardFooter>
+                <Button className={'w-full'} onClick={()=>{signOut()}}>Sign out</Button>
+            </CardFooter>
         </Card>
     );
 };

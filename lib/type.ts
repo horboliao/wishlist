@@ -1,3 +1,20 @@
+export type TokenType = {
+    id: string;
+    email: string;
+    token: string;
+    expires: Date
+}
+
+export type UserType = {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    birthday: Date;
+    isPrivate: boolean;
+}
+
 export type FullnameType = {
     firstname: string;
     lastname: string;
