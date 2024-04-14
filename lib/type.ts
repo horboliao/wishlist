@@ -4,7 +4,10 @@ export type TokenType = {
     token: string;
     expires: Date
 }
-
+export type UserCredType = {
+    email: string;
+    password: string;
+}
 export type UserType = {
     id: number;
     firstName: string;
