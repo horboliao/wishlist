@@ -34,10 +34,10 @@ const Profile = ({following, followers, firstname, birthday, email, lastname}:Pr
                     <Calendar/>
                     <div className="flex-1 space-y-1">
                         <p className="text-sm font-medium leading-none">
-                            {calculateAge(birthday)} years
+                            {calculateAge(new Date(birthday))} years
                         </p>
                         <p className="text-sm text-muted-foreground">
-                            {formatDate(birthday)}
+                            {formatDate(new Date(birthday))}
                         </p>
                     </div>
                 </div>

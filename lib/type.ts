@@ -1,3 +1,5 @@
+import {RequestStatus} from ".prisma/client";
+
 export type TokenType = {
     id: string;
     email: string;
@@ -9,7 +11,7 @@ export type UserCredType = {
     password: string;
 }
 export type UserType = {
-    id: number;
+    id: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -19,6 +21,13 @@ export type UserType = {
 }
 
 export type FullnameType = {
+    firstname: string;
+    lastname: string;
+}
+
+export type NotificationType = {
+    requestId: string;
+    status: RequestStatus;
     firstname: string;
     lastname: string;
 }
