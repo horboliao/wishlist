@@ -10,7 +10,7 @@ interface NotificationsProps {
     notifications: NotificationType[];
 }
 const Notifications = ({notifications, userId}:NotificationsProps) => {
-    console.log(notifications)
+    // console.log(notifications)
     return (
         <Card>
             <CardHeader>

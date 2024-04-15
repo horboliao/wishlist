@@ -54,7 +54,7 @@ const SignupCard = () => {
                 title: "Successful signup",
                 description: "Now, you can access your data.",
             })
-            router.refresh();
+            router.push('/login');
         } catch {
             toast({
                 variant: "destructive",

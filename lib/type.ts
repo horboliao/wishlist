@@ -21,8 +21,9 @@ export type UserType = {
 }
 
 export type FullnameType = {
-    firstname: string;
-    lastname: string;
+    id: string;
+    firstName: string;
+    lastName: string;
 }
 
 export type NotificationType = {

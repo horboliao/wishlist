@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import {calculateAge, formatDate} from "@/lib/date";
 import {Button} from "@/components/ui/button";
+import {useCurrentUser} from "@/hooks/useCurrentUser";
 
 interface Profile {
     firstname: string;

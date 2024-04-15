@@ -2,7 +2,7 @@ import Profile from "@/app/components/Profile";
 import boards, {FullnameType} from "@/lib/type";
 import Notifications from "@/app/components/notifications/Notifications";
 import CalendarCard from "@/app/components/callendar/CalendarCard";
-import SearchFriends from "@/app/components/SearchFriends";
+import SearchFriends from "@/app/components/users/SearchFriends";
 import WishDashboard from "@/app/components/wishes/WishDashboard";
 import {currentUser} from "@/lib/auth";
 import {database} from "@/lib/db";
@@ -29,6 +29,19 @@ export default async function Home() {
         }
     })
 
+    const users = await database.user.findMany({
+        where:{
+            id: {
+                not: user.id
+            }
+        },
+        select: {
+            id: true,
+            firstName: true,
+            lastName: true
+        }
+    }) as FullnameType[];
+
     const requests = userExtended.followRequests.map(req => ({
         requestId: req.id,
         status: req.status,
@@ -37,18 +50,18 @@ export default async function Home() {
     }));
 
     const notifications: FullnameType[] = [
-        {firstname: "John", lastname: "Doe"},
-        {firstname: "Alice", lastname: "Smith"},
-        {firstname: "Bob", lastname: "Johnson"},
-        {firstname: "John", lastname: "Doe"},
-        {firstname: "Alice", lastname: "Smith"},
-        {firstname: "Bob", lastname: "Johnson"},
-        {firstname: "John", lastname: "Doe"},
-        {firstname: "Alice", lastname: "Smith"},
-        {firstname: "Bob", lastname: "Johnson"},
-        {firstname: "John", lastname: "Doe"},
-        {firstname: "Alice", lastname: "Smith"},
-        {firstname: "Bob", lastname: "Johnson"},
+        {firstName: "John", lastName: "Doe", id: '1'},
+        {firstName: "Alice", lastName: "Smith", id: '1'},
+        {firstName: "Bob", lastName: "Johnson", id: '1'},
+        {firstName: "John", lastName: "Doe", id: '1'},
+        {firstName: "Alice", lastName: "Smith", id: '1'},
+        {firstName: "Bob", lastName: "Johnson", id: '1'},
+        {firstName: "John", lastName: "Doe", id: '1'},
+        {firstName: "Alice", lastName: "Smith", id: '1'},
+        {firstName: "Bob", lastName: "Johnson", id: '1'},
+        {firstName: "John", lastName: "Doe", id: '1'},
+        {firstName: "Alice", lastName: "Smith", id: '1'},
+        {firstName: "Bob", lastName: "Johnson", id: '1'},
     ];
     return (
         <main className={'p-8 space-y-6'}>
@@ -63,7 +76,7 @@ export default async function Home() {
                 />
                 <Notifications userId={user.id} notifications={requests}/>
                 <CalendarCard/>
-                <SearchFriends users={notifications}/>
+                <SearchFriends users={users}/>
             </div>
             <WishDashboard boards={boards}/>
         </main>
