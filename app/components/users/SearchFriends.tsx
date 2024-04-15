@@ -28,8 +28,8 @@ const SearchFriends = ({users}: SearchFriendsProps) => {
                     <CommandList>
                         <CommandGroup heading="Suggestions">
                             {
-                                users.map(user =>
-                                    <UserDrawer userId={user.id}/>
+                                users.map((user, index) =>
+                                    <UserDrawer userId={user.id} key={index}/>
                                 )
                             }
                         </CommandGroup>

@@ -1,5 +1,5 @@
 import Profile from "@/app/components/Profile";
-import boards, {FullnameType} from "@/lib/type";
+import {BoardType, FullnameType} from "@/lib/type";
 import Notifications from "@/app/components/notifications/Notifications";
 import CalendarCard from "@/app/components/callendar/CalendarCard";
 import SearchFriends from "@/app/components/users/SearchFriends";
@@ -16,6 +16,11 @@ export default async function Home() {
         }, include: {
             followers: true,
             following: true,
+            boards: {
+               include: {
+                   wishes: true
+               }
+            },
             followRequests: {
                 include: {
                     follower: {
@@ -49,20 +54,7 @@ export default async function Home() {
         lastName: req.follower.lastname,
     }));
 
-    const notifications: FullnameType[] = [
-        {firstName: "John", lastName: "Doe", id: '1'},
-        {firstName: "Alice", lastName: "Smith", id: '1'},
-        {firstName: "Bob", lastName: "Johnson", id: '1'},
-        {firstName: "John", lastName: "Doe", id: '1'},
-        {firstName: "Alice", lastName: "Smith", id: '1'},
-        {firstName: "Bob", lastName: "Johnson", id: '1'},
-        {firstName: "John", lastName: "Doe", id: '1'},
-        {firstName: "Alice", lastName: "Smith", id: '1'},
-        {firstName: "Bob", lastName: "Johnson", id: '1'},
-        {firstName: "John", lastName: "Doe", id: '1'},
-        {firstName: "Alice", lastName: "Smith", id: '1'},
-        {firstName: "Bob", lastName: "Johnson", id: '1'},
-    ];
+    const boards = userExtended.boards as BoardType
     return (
         <main className={'p-8 space-y-6'}>
             <div className={'grid grid-cols-4 gap-6'}>

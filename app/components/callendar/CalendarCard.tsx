@@ -60,7 +60,7 @@ const CalendarCard = () => {
                         :
                         <div>
                             {
-                                friends?.map(friend => <p>{friend.firstname} {friend.lastname}</p>)
+                                friends?.map((friend, index) => <p key={index}>{friend.firstname} {friend.lastname}</p>)
                             }
                         </div>
                 }

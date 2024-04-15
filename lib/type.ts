@@ -34,6 +34,7 @@ export type NotificationType = {
 }
 
 export type BoardType = {
+    id: string;
     name: string;
     isPrivate: boolean;
 
