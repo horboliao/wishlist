@@ -54,7 +54,6 @@ export default async function Home() {
         lastName: req.follower.lastname,
     }));
 
-    const boards = userExtended.boards as BoardType
     return (
         <main className={'p-8 space-y-6'}>
             <div className={'grid grid-cols-4 gap-6'}>
@@ -70,7 +69,7 @@ export default async function Home() {
                 <CalendarCard/>
                 <SearchFriends users={users}/>
             </div>
-            <WishDashboard boards={boards}/>
+            <WishDashboard boards={userExtended.boards as BoardType[]}/>
         </main>
     );
 }

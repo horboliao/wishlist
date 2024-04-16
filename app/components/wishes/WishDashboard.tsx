@@ -7,7 +7,6 @@ import Board from "@/app/components/wishes/Board";
 import {Button} from "@/components/ui/button";
 import {Dialog, DialogTrigger, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import BoardForm from "@/app/components/forms/BoardForm";
-import {calculateAge} from "@/lib/date";
 
 interface WishDashboardProps {
     boards: BoardType[];

@@ -11,23 +11,23 @@ const PriorityIcon = ({priority}:PriorityIconProps) => {
 
     switch (priority) {
         case PriorityType.LOW:
-            colorClass = 'text-gray-200';
+            colorClass = 'bg-gray-200';
             break;
         case PriorityType.MEDIUM:
-            colorClass = 'text-blue-400';
+            colorClass = 'bg-blue-400';
             break;
         case PriorityType.HIGH:
-            colorClass = 'text-amber-300';
+            colorClass = 'bg-amber-300';
             break;
         case PriorityType.URGENT:
-            colorClass = 'text-red-500';
+            colorClass = 'bg-red-500';
             break;
         default:
             colorClass = '';
     }
 
     return (
-        <Circle className={colorClass} size={24}/>
+        <span class={`inline-block h-4 w-4 rounded-full mr-2 ${colorClass}`}></span>
     );
 };
 
