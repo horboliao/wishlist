@@ -4,7 +4,6 @@ import {Button} from "@/components/ui/button";
 import {Calendar, User, X} from "lucide-react";
 import axios from "axios";
 import {calculateAge, formatDate} from "@/lib/date";
-import boards from "@/lib/type";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
 import Board from "@/app/components/wishes/Board";
 interface UserDrawerProps  {
@@ -73,9 +72,9 @@ const UserDrawer = ({userId}:UserDrawerProps) => {
                         <div className={'px-16 w-2/3'}>
                             <Carousel>
                                 <CarouselContent className="-ml-1">
-                                    {boards.map((board, index) => (
+                                    {user.boards.map((board, index) => (
                                         <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                                            <Board board={board}/>
+                                            <Board board={board} isDisabled/>
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
