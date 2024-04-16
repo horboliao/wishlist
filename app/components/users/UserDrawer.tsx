@@ -6,11 +6,14 @@ import axios from "axios";
 import {calculateAge, formatDate} from "@/lib/date";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
 import Board from "@/app/components/wishes/Board";
+import {toast} from "@/components/ui/use-toast";
+import {useRouter} from "next/navigation";
 interface UserDrawerProps  {
     userId: string;
 }
 const UserDrawer = ({userId}:UserDrawerProps) => {
     const [user, setUser] = useState();
+    const router = useRouter();
 
     useEffect(()=>{
         axios.get(`/api/${userId}`)
@@ -19,6 +22,30 @@ const UserDrawer = ({userId}:UserDrawerProps) => {
             })
             .catch((e) => console.log("error fetching user", e))
     },[userId])
+
+    const onFollow = async () => {
+        try {
+            await axios.post(`/api/${userId}/follow`);
+            if (user.isPrivate){
+                toast({
+                    title: "Follow request send successfully",
+                    description: "You will follow this user after it approves request.",
+                })
+            } else {
+                toast({
+                    title: "Now, you follow this user",
+                    description: "You can see it`s boards to surprise it.",
+                })
+            }
+            router.refresh();
+        } catch (e) {
+            toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: "Failed to follow the user. Try again",
+            })
+        }
+    }
 
     if (!user) {
         return null;
@@ -42,7 +69,7 @@ const UserDrawer = ({userId}:UserDrawerProps) => {
                             <DrawerTitle>{user.firstName} {user.lastName}</DrawerTitle>
                             <DrawerDescription>{user.email}</DrawerDescription>
                         </div>
-                        <Button>Follow</Button>
+                        <Button onClick={onFollow}>Follow</Button>
                     </DrawerHeader>
                     <div className='flex flex-row items-start'>
                         <div className="p-4 pb-0 space-y-4 flex flex-row justify-between gap-4 w-1/3">

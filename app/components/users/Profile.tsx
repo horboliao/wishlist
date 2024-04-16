@@ -21,8 +21,6 @@ import {
     DialogTrigger
 } from "@/components/ui/dialog";
 import ProfileForm from "@/app/components/forms/ProfileForm";
-import BoardForm from "@/app/components/forms/BoardForm";
-import {ProfileType} from "@/lib/type";
 
 interface Profile {
     id: string;

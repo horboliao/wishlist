@@ -38,8 +38,7 @@ export default async function Home() {
         where:{
             id: {
                 not: user.id
-            },
-            isPrivate: false
+            }
         },
         select: {
             id: true,
