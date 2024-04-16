@@ -10,7 +10,7 @@ interface NotificationsProps {
     notifications: NotificationType[];
 }
 const Notifications = ({notifications, userId}:NotificationsProps) => {
-    // console.log(notifications)
+
     return (
         <Card>
             <CardHeader>
@@ -25,9 +25,9 @@ const Notifications = ({notifications, userId}:NotificationsProps) => {
                                     <Notification
                                         key={index}
                                         userId={userId}
-                                        firstname={notification.firstname}
-                                        lastname={notification.lastname}
-                                        requestId={notification.requestId}
+                                        firstname={notification.follower.firstName}
+                                        lastname={notification.follower.lastName}
+                                        requestId={notification.id}
                                         status={notification.status}
                                     />
                                 )

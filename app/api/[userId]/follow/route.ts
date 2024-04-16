@@ -23,8 +23,8 @@ export async function POST(
         if (targetUser.isPrivate) {
             const followRequest = await database.followRequest.create({
                 data: {
-                    authorId: user.id,
-                    followerId: userId
+                    targetUserId: userId,
+                    followerId: user.id
                 }
             });
             return NextResponse.json(followRequest);

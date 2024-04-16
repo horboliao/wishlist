@@ -27,10 +27,9 @@ export type FullnameType = {
 }
 
 export type NotificationType = {
-    requestId: string;
+    id: string;
     status: RequestStatus;
-    firstname: string;
-    lastname: string;
+    follower: FullnameType;
 }
 
 export type BoardType = {
