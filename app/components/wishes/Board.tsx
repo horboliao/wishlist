@@ -103,7 +103,7 @@ const Board = ({board, isDisabled}: BoardProps) => {
                                     wishes.map((w) =>
                                         <>
                                             <DialogTrigger asChild onClick={()=>{setWish(w)}}>
-                                                <div className={'flex flex-row justify-between items-center rounded-lg py-2 px-4 cursor-pointer hover:bg-gray-100'}>
+                                                <div className={'flex flex-row justify-between items-center rounded-lg py-2 px-4 cursor-pointer hover:bg-gray-100 w-10/12'}>
                                                     <div className={'flex flex-row gap-2 items-center'}>
                                                         <PriorityIcon priority={w.priority}/>
                                                         <p className="text-sm leading-none">{w.title}</p>

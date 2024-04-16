@@ -1,4 +1,4 @@
-import Profile from "@/app/components/Profile";
+import Profile from "@/app/components/users/Profile";
 import {BoardType, FullnameType} from "@/lib/type";
 import Notifications from "@/app/components/notifications/Notifications";
 import CalendarCard from "@/app/components/callendar/CalendarCard";
@@ -38,7 +38,8 @@ export default async function Home() {
         where:{
             id: {
                 not: user.id
-            }
+            },
+            isPrivate: false
         },
         select: {
             id: true,
@@ -58,6 +59,8 @@ export default async function Home() {
         <main className={'p-8 space-y-6'}>
             <div className={'grid grid-cols-4 gap-6'}>
                 <Profile
+                    id={user.id}
+                    isPrivate={user.isPrivate}
                     firstname={user.firstName}
                     lastname={user.lastName}
                     email={user.email}
